@@ -1,0 +1,26 @@
+.appcard{
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 27px;
+    border-radius: 15px;
+}
+.cardtitle{
+    color: #FFFF;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34.47px;
+    margin-bottom: 12px;
+}
+.cardtitle span{
+    font-weight:700;
+}
+.success{
+    color: #9DFF5B;
+}
+.warning{
+    color:rgba(244,187,74,1);
+}

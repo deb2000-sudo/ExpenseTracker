@@ -1,10 +1,12 @@
-
-
+import {SnackbarProvider} from 'notistack';
+import Home from './AppPages/Home/Home';
 const App=()=> {
   return (
-    <div className="App">
-      <h1>This is expense tracker</h1>
-    </div>
+    <SnackbarProvider>
+      <div>
+        <Home/>
+      </div>
+    </SnackbarProvider>
   );
 }
 
