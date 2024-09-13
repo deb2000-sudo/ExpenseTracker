@@ -5,6 +5,8 @@ import styles from "./Home.module.css";
 import AddIncomeForm from "../../components/AppForms/AddIncomeForm/AddIncomeForm";
 import AddExpenseForm from "../../components/AppForms/AddExpenseForm/AddExpenseForm";
 import PieCharts from "../../components/PieCharts/PieCharts";
+import TransactionList from "../../components/TransactionList/TransactionList";
+import BarChart from "../../components/BarChartComponent/BarChartComponent";
 const Home = () => {
   const [balance, setBalance] = useState(0);
   const [expense, setExpense] = useState(0);
@@ -91,6 +93,11 @@ const Home = () => {
     });
   }, [expenseList]);
   // console.log(categoryCount,setCategorySpends)
+  useEffect(() => {
+    if (isMounted) {
+      localStorage.setItem("balance", balance);
+    }
+  }, [balance]);
   return (
     <div className={styles.ETcontainer}>
       <h1>Expense Tracker</h1>
@@ -115,6 +122,24 @@ const Home = () => {
           }}
         />
         <PieCharts
+          data={[
+            { name: "Food", value: categorySpends.food },
+            { name: "Entertainment", value: categorySpends.entertainment },
+            { name: "Travel", value: categorySpends.travel },
+          ]}
+        />
+      </div>
+      {/* Transactions and bar chart wrapper */}
+      <div className={styles.transactionsWrapper}>
+        <TransactionList
+          transactions={expenseList}
+          editTransactions={setExpenseList}
+          title="Recent Transactions"
+          balance={balance}
+          setBalance={setBalance}
+        />
+
+        <BarChart
           data={[
             { name: "Food", value: categorySpends.food },
             { name: "Entertainment", value: categorySpends.entertainment },
