@@ -38,14 +38,17 @@ const AddExpenseForm = ({
     }
     //first deduct from wallet balance
     setBalance((prev) => prev - Number(expenseFormData.price));
+
     //for every expense there is a need an id for unique expense
     //so that we can do edit in that expense
+    console.log("check 1",expenseList)
     const lastId = expenseList.length > 0 ? expenseList[0].id : 0;
+    console.log("check 2",lastId);
     setExpenseList((prev) => [
-      { ...setExpenseFormData, id: lastId + 1 },
+      { ...expenseFormData, id: lastId + 1 },
       ...prev,
     ]);
-
+    console.log("check 3",expenseList)
     //after adding the expense make sure form data should be clear
     setExpenseFormData({
       title: "",
@@ -78,6 +81,7 @@ const AddExpenseForm = ({
     setExpenseList(updatedList);
     setIsOpen(false);
   };
+
   useEffect(() => {
     if (editId) {
       const expenseData = expenseList.find((item) => item.id == editId);
