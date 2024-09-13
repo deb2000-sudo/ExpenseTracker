@@ -7,7 +7,8 @@ import AddExpenseForm from "../../components/AppForms/AddExpenseForm/AddExpenseF
 const Home = () => {
   const [balance, setBalance] = useState(0);
   const [expense, setExpense] = useState(0);
-
+  // an array of objects is require where objects are called expense
+  const [expenseList,setExpenseList]=useState([]);
   //we need state variables to track whether modal are open or close
   //There is a modal for add balance so need a state variable for that
   const [isOpenBalance,setIsOpenBalance]=useState(false);
