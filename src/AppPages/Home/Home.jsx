@@ -43,6 +43,9 @@ const Home = () => {
       setBalance(5000);
       localStorage.setItem("balance", 5000);
     }
+    const items=JSON.parse(localStorage.getItem("expenses"));
+    setExpenseList(items || []);
+    setIsMounted((prev)=>!prev);
   }, []);
   //an useEffect is require to saving expense list in localstorage
   useEffect(() => {
